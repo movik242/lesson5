@@ -1,0 +1,365 @@
+Script started on Wed 11 Oct 2023 08:01:20 AM UTC
+[root@nfss ~]# sysr[Ktemctl enable firewalld.service  --now
+Created symlink from /etc/systemd/system/dbus-org.fedoraproject.FirewallD1.service to /usr/lib/systemd/system/firewalld.service.
+Created symlink from /etc/systemd/system/multi-user.target.wants/firewalld.service to /usr/lib/systemd/system/firewalld.service.
+[root@nfss ~]# 
+[root@nfss ~]# firewall-cmd --add-service="nfs3" \
+> --add-service="rpc-bind" '[K\
+> --add-service="mountd" \
+> --rep[K[K[Kpermanent
+success
+[root@nfss ~]# firewo[Kall-cmd --reload
+success
+[root@nfss ~]# systemctl em[Knable nfs --now
+Created symlink from /etc/systemd/system/multi-user.target.wants/nfs-server.service to /usr/lib/systemd/system/nfs-server.service.
+[root@nfss ~]# ss -tnplu
+Netid  State      Recv-Q Send-Q Local Address:Port               Peer Address:Port              
+udp    UNCONN     0      0      127.0.0.1:323                   *:*                   users:(("chronyd",pid=397,fd=5))
+udp    UNCONN     0      0         *:68                    *:*                   users:(("dhclient",pid=3199,fd=6))
+udp    UNCONN     0      0         *:20048                 *:*                   users:(("rpc.mountd",pid=22935,fd=7))
+udp    UNCONN     0      0         *:44631                 *:*                  
+udp    UNCONN     0      0         *:111                   *:*                   users:(("rpcbind",pid=340,fd=6))
+udp    UNCONN     0      0      127.0.0.1:659                   *:*                   users:(("rpc.statd",pid=22928,fd=33))
+udp    UNCONN     0      0         *:926                   *:*                   users:(("rpcbind",pid=340,fd=7))
+udp    UNCONN     0      0         *:53733                 *:*                   users:(("rpc.statd",pid=22928,fd=7))
+udp    UNCONN     0      0         *:2049                  *:*                  
+udp    UNCONN     0      0         [::1]:323                [::]:*                   users:(("chronyd",pid=397,fd=6))
+udp    UNCONN     0      0      [::]:20048              [::]:*                   users:(("rpc.mountd",pid=22935,fd=9))
+udp    UNCONN     0      0      [::]:111                [::]:*                   users:(("rpcbind",pid=340,fd=9))
+udp    UNCONN     0      0      [::]:926                [::]:*                   users:(("rpcbind",pid=340,fd=10))
+udp    UNCONN     0      0      [::]:56499              [::]:*                  
+udp    UNCONN     0      0      [::]:58816              [::]:*                   users:(("rpc.statd",pid=22928,fd=9))
+udp    UNCONN     0      0      [::]:2049               [::]:*                  
+tcp    LISTEN     0      64        *:2049                  *:*                  
+tcp    LISTEN     0      128       *:111                   *:*                   users:(("rpcbind",pid=340,fd=8))
+tcp    LISTEN     0      128       *:20048                 *:*                   users:(("rpc.mountd",pid=22935,fd=8))
+tcp    LISTEN     0      64        *:41522                 *:*                  
+tcp    LISTEN     0      128       *:22                    *:*                   users:(("sshd",pid=680,fd=3))
+tcp    LISTEN     0      128       *:36472                 *:*                   users:(("rpc.statd",pid=22928,fd=8))
+tcp    LISTEN     0      100    127.0.0.1:25                    *:*                   users:(("master",pid=853,fd=13))
+tcp    LISTEN     0      64     [::]:2049               [::]:*                  
+tcp    LISTEN     0      128    [::]:34471              [::]:*                   users:(("rpc.statd",pid=22928,fd=10))
+tcp    LISTEN     0      128    [::]:111                [::]:*                   users:(("rpcbind",pid=340,fd=11))
+tcp    LISTEN     0      128    [::]:20048              [::]:*                   users:(("rpc.mountd",pid=22935,fd=10))
+tcp    LISTEN     0      128    [::]:22                 [::]:*                   users:(("sshd",pid=680,fd=4))
+tcp    LISTEN     0      64     [::]:36215              [::]:*                  
+tcp    LISTEN     0      100       [::1]:25                 [::]:*                   users:(("master",pid=853,fd=14))
+[root@nfss ~]# mkdir -p /srv/share/upload
+[root@nfss ~]# chown -r[KR nfsnobody:nfsnobody /srv/share/
+[root@nfss ~]# chmod 0777 /srv/share/upload/
+[root@nfss ~]# cat << EOF > /etc/exports
+> /srv/share/ 10.0.2.24 /[K[K/32(rw.[K,sync,root_squash)
+> EOF
+[root@nfss ~]# exportfs -r
+[root@nfss ~]# exportfs -r[Ks
+/srv/share  10.0.2.24/32(sync,wdelay,hide,no_subtree_check,sec=sys,rw,secure,root_squash,no_all_squash)
+[root@nfss ~]#  exportfs -srcat << EOF > /etc/exports
+/srv/share/ 10.0.2.24/32(rw,sync,root_squash)
+EOF
+[A[A[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Chmod 0777 /srv/share/upload/
+[K
+[K
+[K[A[A[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[4Pat << EOF > /etc/exports
+/srv/share/ 10.0.2.24/32(rw,sync,root_squash)
+EOF
+[A[A[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[14Pexportfs -r
+[K
+[K
+[K[A[A[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[Kping 10.0.2.16
+PING 10.0.2.16 (10.0.2.16) 56(84) bytes of data.
+^C
+--- 10.0.2.16 ping statistics ---
+10 packets transmitted, 0 received, 100% packet loss, time 9003ms
+
+[root@nfss ~]# ping 10.0.2.16[K[K24
+PING 10.0.2.24 (10.0.2.24) 56(84) bytes of data.
+^C
+--- 10.0.2.24 ping statistics ---
+11 packets transmitted, 0 received, 100% packet loss, time 10007ms
+
+[root@nfss ~]# ping 10.0.2.24
+PING 10.0.2.24 (10.0.2.24) 56(84) bytes of data.
+From 10.0.2.15 icmp_seq=1 Destination Host Unreachable
+From 10.0.2.15 icmp_seq=2 Destination Host Unreachable
+From 10.0.2.15 icmp_seq=3 Destination Host Unreachable
+From 10.0.2.15 icmp_seq=4 Destination Host Unreachable
+^C
+--- 10.0.2.24 ping statistics ---
+4 packets transmitted, 0 received, +4 errors, 100% packet loss, time 3000ms
+pipe 4
+[root@nfss ~]# ping 10.0.2.24[K[K16[K[K15
+PING 10.0.2.15 (10.0.2.15) 56(84) bytes of data.
+64 bytes from 10.0.2.15: icmp_seq=1 ttl=64 time=0.041 ms
+64 bytes from 10.0.2.15: icmp_seq=2 ttl=64 time=0.041 ms
+^C
+--- 10.0.2.15 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 999ms
+rtt min/avg/max/mdev = 0.041/0.041/0.041/0.000 ms
+[root@nfss ~]# ping 10.0.2.15[K[K23
+PING 10.0.2.23 (10.0.2.23) 56(84) bytes of data.
+64 bytes from 10.0.2.23: icmp_seq=1 ttl=64 time=0.037 ms
+64 bytes from 10.0.2.23: icmp_seq=2 ttl=64 time=0.041 ms
+^C
+--- 10.0.2.23 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1000ms
+rtt min/avg/max/mdev = 0.037/0.039/0.041/0.002 ms
+[root@nfss ~]#  ping 10.0.2.2315[K6
+PING 10.0.2.16 (10.0.2.16) 56(84) bytes of data.
+From 10.0.2.15 icmp_seq=1 Destination Host Unreachable
+From 10.0.2.15 icmp_seq=2 Destination Host Unreachable
+From 10.0.2.15 icmp_seq=3 Destination Host Unreachable
+From 10.0.2.15 icmp_seq=4 Destination Host Unreachable
+^C
+--- 10.0.2.16 ping statistics ---
+5 packets transmitted, 0 received, +4 errors, 100% packet loss, time 4003ms
+pipe 4
+[root@nfss ~]# ping 10.0.2.16[K[K24
+PING 10.0.2.24 (10.0.2.24) 56(84) bytes of data.
+From 10.0.2.15 icmp_seq=1 Destination Host Unreachable
+From 10.0.2.15 icmp_seq=2 Destination Host Unreachable
+From 10.0.2.15 icmp_seq=3 Destination Host Unreachable
+From 10.0.2.15 icmp_seq=4 Destination Host Unreachable
+^C
+--- 10.0.2.24 ping statistics ---
+5 packets transmitted, 0 received, +4 errors, 100% packet loss, time 4004ms
+pipe 4
+[root@nfss ~]# ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 52:54:00:4d:77:d3 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.15/24 brd 10.0.2.255 scope global noprefixroute dynamic eth0
+       valid_lft 391sec preferred_lft 391sec
+    inet6 fe80::5054:ff:fe4d:77d3/64 scope link 
+       valid_lft forever preferred_lft forever
+3: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 08:00:27:b3:c7:e9 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.23/24 brd 10.0.2.255 scope global noprefixroute eth1
+       valid_lft forever preferred_lft forever
+    inet6 fe80::a00:27ff:feb3:c7e9/64 scope link 
+       valid_lft forever preferred_lft forever
+[root@nfss ~]# ip aping 10.0.2.24
+PING 10.0.2.24 (10.0.2.24) 56(84) bytes of data.
+^C
+--- 10.0.2.24 ping statistics ---
+2 packets transmitted, 0 received, 100% packet loss, time 1002ms
+
+[root@nfss ~]# ping 10.0.2.24ip a[Kping 10.0.2.24[K[K16
+PING 10.0.2.16 (10.0.2.16) 56(84) bytes of data.
+^C
+--- 10.0.2.16 ping statistics ---
+2 packets transmitted, 0 received, 100% packet loss, time 1000ms
+
+[root@nfss ~]# ping 10.0.2.16
+PING 10.0.2.16 (10.0.2.16) 56(84) bytes of data.
+From 10.0.2.15 icmp_seq=1 Destination Host Unreachable
+From 10.0.2.15 icmp_seq=2 Destination Host Unreachable
+From 10.0.2.15 icmp_seq=3 Destination Host Unreachable
+From 10.0.2.15 icmp_seq=4 Destination Host Unreachable
+^C
+--- 10.0.2.16 ping statistics ---
+4 packets transmitted, 0 received, +4 errors, 100% packet loss, time 3003ms
+pipe 4
+[root@nfss ~]# ping 10.0.2.16[K[K24
+PING 10.0.2.24 (10.0.2.24) 56(84) bytes of data.
+From 10.0.2.15 icmp_seq=1 Destination Host Unreachable
+From 10.0.2.15 icmp_seq=2 Destination Host Unreachable
+From 10.0.2.15 icmp_seq=3 Destination Host Unreachable
+From 10.0.2.15 icmp_seq=4 Destination Host Unreachable
+^C
+--- 10.0.2.24 ping statistics ---
+4 packets transmitted, 0 received, +4 errors, 100% packet loss, time 3002ms
+pipe 4
+[root@nfss ~]# ping 10.0.2.24
+PING 10.0.2.24 (10.0.2.24) 56(84) bytes of data.
+From 10.0.2.15 icmp_seq=1 Destination Host Unreachable
+From 10.0.2.15 icmp_seq=2 Destination Host Unreachable
+From 10.0.2.15 icmp_seq=3 Destination Host Unreachable
+From 10.0.2.15 icmp_seq=4 Destination Host Unreachable
+^From 10.0.2.15 icmp_seq=5 Destination Host Unreachable
+From 10.0.2.15 icmp_seq=6 Destination Host Unreachable
+From 10.0.2.15 icmp_seq=7 Destination Host Unreachable
+From 10.0.2.15 icmp_seq=8 Destination Host Unreachable
+^V^C
+--- 10.0.2.24 ping statistics ---
+11 packets transmitted, 0 received, +8 errors, 100% packet loss, time 10010ms
+pipe 4
+[root@nfss ~]# 
+[root@nfss ~]# ping 10.0.2.241624[Kip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc pfifo_fast state DOWN group default qlen 1000
+    link/ether 52:54:00:4d:77:d3 brd ff:ff:ff:ff:ff:ff
+3: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 08:00:27:b3:c7:e9 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.23/24 brd 10.0.2.255 scope global noprefixroute eth1
+       valid_lft forever preferred_lft forever
+    inet6 fe80::a00:27ff:feb3:c7e9/64 scope link 
+       valid_lft forever preferred_lft forever
+[root@nfss ~]# ip aping 10.0.2.24
+PING 10.0.2.24 (10.0.2.24) 56(84) bytes of data.
+64 bytes from 10.0.2.24: icmp_seq=1 ttl=64 time=1.86 ms
+64 bytes from 10.0.2.24: icmp_seq=2 ttl=64 time=1.07 ms
+^C
+--- 10.0.2.24 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1002ms
+rtt min/avg/max/mdev = 1.071/1.466/1.861/0.395 ms
+[root@nfss ~]#  /[Ktouch che[K[K[K/srv/shq[Kare/upload/check_file
+[root@nfss ~]# ls -l /srv/share/upload/
+total 0
+-rw-r--r--. 1 root root 0 Oct 11 11:52 check_file
+[root@nfss ~]#  ls -l /srv/share/upload/
+total 0
+-rw-r--r--. 1 root      root      0 Oct 11 11:52 check_file
+-rw-r--r--. 1 nfsnobody nfsnobody 0 Oct 11 12:12 client_file
+[root@nfss ~]#  
+[root@nfss ~]#  ls -l /srv/share/upload/[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C touch /srv/share/upload/check_file[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[11Pls -l /srv/share/upload/[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C [Kip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 52:54:00:4d:77:d3 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.15/24 brd 10.0.2.255 scope global noprefixroute dynamic eth0
+       valid_lft 572sec preferred_lft 572sec
+3: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 08:00:27:b3:c7:e9 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.23/24 brd 10.0.2.255 scope global noprefixroute eth1
+       valid_lft forever preferred_lft forever
+    inet6 fe80::a00:27ff:feb3:c7e9/64 scope link 
+       valid_lft forever preferred_lft forever
+[root@nfss ~]#  ip a[Kip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 52:54:00:4d:77:d3 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.15/24 brd 10.0.2.255 scope global noprefixroute dynamic eth0
+       valid_lft 525sec preferred_lft 525sec
+3: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 08:00:27:b3:c7:e9 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.23/24 brd 10.0.2.255 scope global noprefixroute eth1
+       valid_lft forever preferred_lft forever
+    inet6 fe80::a00:27ff:feb3:c7e9/64 scope link 
+       valid_lft forever preferred_lft forever
+[root@nfss ~]# nano /etc/ssh/sshd_config 
+bash: nano: command not found
+[root@nfss ~]# su[K[Kyum install [K[K[K[K[K[K[K[K[K[K[K[Knano /etc/ssh/sshd_config [1P[1P[1P[1P[1@v[1@i
+[1;25r[?25h[?8c[?25h[?0c[27m[24m[0m[H[J[?25l[?1c[25;1H"/etc/ssh/sshd_config" 140L, 3916C[1;1H#[7C$OpenBSD: sshd_config,v 1.100 2016/08/15 12:32:04 naddy Exp $
+
+# This is the sshd server system-wide configuration file.  See
+# sshd_config(5) for more information.
+
+# This sshd was compiled with PATH=/usr/local/bin:/usr/bin
+
+# The strategy used for options in the default sshd_config shipped with
+# OpenSSH is to specify options with their default value where
+# possible, but leave them commented.  Uncommented options override the
+# default value.
+
+# If you want to change the port on a SELinux system, you have to tell
+# SELinux about this change.
+# semanage port -a -t ssh_port_t -p tcp #PORTNUMBER
+#
+#Port 22
+#AddressFamily any
+#ListenAddress 0.0.0.0
+#ListenAddress ::
+
+HostKey /etc/ssh/ssh_host_rsa_key
+#HostKey /etc/ssh/ssh_host_dsa_key
+HostKey /etc/ssh/ssh_host_ecdsa_key[1;1H[?25h[?0c
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[?25l[?1c[1;24r[24;1H
+[1;25r[24;1HHostKey /etc/ssh/ssh_host_ed25519_key[25;1H[K[24;1H[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H# Ciphers and keying[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H#RekeyLimit default none[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H# Logging[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H#SyslogFacility AUTH[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1HSyslogFacility AUTHPRIV[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H#LogLevel INFO[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H# Authentication:[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H#LoginGraceTime 2m[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H#PermitRootLogin yes[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H#StrictModes yes[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H#MaxAuthTries 6[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H#MaxSessions 10[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H#PubkeyAuthentication yes[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H# The default is to check both .ssh/authorized_keys and .ssh/authorized_keys2[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H# but this is overridden so installations will only check .ssh/authorized_keys[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1HAuthorizedKeysFile      .ssh/authorized_keys[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H#AuthorizedPrincipalsFile none[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H#AuthorizedKeysCommand none[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H#AuthorizedKeysCommandUser nobody[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H# For this to work you will also need host keys in /etc/ssh/ssh_known_hosts[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H#HostbasedAuthentication no[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H# Change to yes if you don't trust ~/.ssh/known_hosts for[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H# HostbasedAuthentication[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H#IgnoreUserKnownHosts no[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H# Don't read the user's ~/.rhosts and ~/.shosts files[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H#IgnoreRhosts yes[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H# To disable tunneled clear text passwords, change to no here![?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H#PasswordAuthentication yes[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H#PermitEmptyPasswords no[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1HPasswordAuthentication no[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H# Change to no to disable s/key passwords[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1H#ChallengeResponseAuthentication yes[?25h[?0c[?25l[?1c[1;24r[24;1H
+[1;25r[24;1HChallengeResponseAuthentication no[?25h[?0c[23;1H[22;1H[21;1H[20;1H[?25l[?1c[25;1H?\<PasswordAuthentication\>[18;2H[?25h[?0c
+#
+P[?25l[?1c[25;1H[18;2H[?25h[?0c
+#
+P
+[20;2H[?25l[?1c[25;1H[18;2H[?25h[?0c
+#
+PP[?25l[?1c[25;1H[1m-- INSERT --[0m[25;13H[K[20;1H[?25h[?0c[?25l[?1c#PasswordAuthentication no#[?25h[?0c[19;2H[18;2H[?25l[?1cPasswordAuthentication yes[18;27H[K[18;1H[?25h[?0c[?25l[?1c[25;4H[1mREPLACE --[18;1H[?25h[?0c[?25l[?1c[25;4HINSERT -[0m[25;13H[K[18;1H[?25h[?0c[?25l[?1c[25;4H[1mREPLACE --[18;1H[?25h[?0c[?25l[?1c[0masswordAuthentication yes[18;26H[K[18;1H[?25h[?0c[?25l[?1cP[?25h[?0c[?25l[?1c[25;4H[1mINSERT -[0m[25;13H[K[18;2H[?25h[?0c[?25l[?1casswordAuthentication yesPa[?25h[?0c[25;1H[K[18;2H[?25l[?1c[?25h[?0c[?25l[?1c[25;1HEntering Ex mode.  Type "visual" to go to Normal mode.[?25h[?0c
+:qw
+[?25l[?1c[1m[37m[41mE492: Not an editor command: qw[?25h[?0c[0m
+:w
+[?25l[?1c"/etc/ssh/sshd_config" "/etc/ssh/sshd_config" 140L, 3916C written[?25h[?0c
+:q
+[25;1H[root@nfss ~]

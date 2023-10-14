@@ -1,0 +1,440 @@
+Script started on Wed 11 Oct 2023 08:49:06 AM UTC
+[root@nfsc ~]# systemctl enable firewalld.service --now
+Created symlink from /etc/systemd/system/dbus-org.fedoraproject.FirewallD1.service to /usr/lib/systemd/system/firewalld.service.
+Created symlink from /etc/systemd/system/multi-user.target.wants/firewalld.service to /usr/lib/systemd/system/firewalld.service.
+[root@nfsc ~]# ^C
+[root@nfsc ~]# systemctl enable firewalld.service --now[C[C[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kstatus  firewalld.service 
+[1;32m●[0m firewalld.service - firewalld - dynamic firewall daemon
+   Loaded: loaded (/usr/lib/systemd/system/firewalld.service; enabled; vendor preset: enabled)
+   Active: [1;32mactive (running)[0m since Wed 2023-10-11 08:49:25 UTC; 21s ago
+     Docs: man:firewalld(1)
+ Main PID: 983 (firewalld)
+   CGroup: /system.slice/firewalld.service
+           └─983 /usr/bin/python2 -Es /usr/sbin/firewalld --nofork --nopid
+
+Oct 11 08:49:24 nfsc systemd[1]: Starting firewalld - dynamic firewall daemon...
+Oct 11 08:49:25 nfsc systemd[1]: Started firewalld - dynamic firewall daemon.
+Oct 11 08:49:25 nfsc firewalld[983]: [1;39mWARNING: AllowZoneDrifting is enabled....w.[0m
+Hint: Some lines were ellipsized, use -l to show in full.
+[root@nfsc ~]# echo "10.0.2.23"[K"[K:/srv/share [K/ /mnt nfs vers=3,proto=udp,noautp[Ko,x-sy stemd.automount 0 0" >> /etc/fstab
+[root@nfsc ~]# systen[Kmctl daemon-reload 
+[root@nfsc ~]# systemctl t[Krea[Kstart remote-t[Kfs.target 
+[root@nfsc ~]# mount | grep mnt
+systemd-1 on /[01;31m[Kmnt[m[K type autofs (rw,relatime,fd=43,pgrp=1,timeout=0,minproto=5,maxproto=5,direct,pipe_ino=17852)
+[root@nfsc ~]# ls -l .[K/mnt/
+^C
+[root@nfsc ~]# mc
+bash: mc: command not found
+[root@nfsc ~]# yum install mc -y
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirrors.powernet.com.ru
+ * extras: mirrors.powernet.com.ru
+ * updates: mirrors.powernet.com.ru
+Resolving Dependencies
+--> Running transaction check
+---> Package mc.x86_64 1:4.8.7-11.el7 will be installed
+--> Processing Dependency: perl(strict) for package: 1:mc-4.8.7-11.el7.x86_64
+--> Processing Dependency: perl(bytes) for package: 1:mc-4.8.7-11.el7.x86_64
+--> Processing Dependency: perl(POSIX) for package: 1:mc-4.8.7-11.el7.x86_64
+--> Processing Dependency: perl(File::Temp) for package: 1:mc-4.8.7-11.el7.x86_64
+--> Processing Dependency: perl(File::Basename) for package: 1:mc-4.8.7-11.el7.x86_64
+--> Processing Dependency: /usr/bin/perl for package: 1:mc-4.8.7-11.el7.x86_64
+--> Processing Dependency: libgpm.so.2()(64bit) for package: 1:mc-4.8.7-11.el7.x86_64
+--> Running transaction check
+---> Package gpm-libs.x86_64 0:1.20.7-6.el7 will be installed
+---> Package perl.x86_64 4:5.16.3-299.el7_9 will be installed
+--> Processing Dependency: perl-libs = 4:5.16.3-299.el7_9 for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Socket) >= 1.3 for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Scalar::Util) >= 1.10 for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl-macros for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl-libs for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(threads::shared) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(threads) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(constant) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Time::Local) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Time::HiRes) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Storable) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Socket) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Scalar::Util) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Pod::Simple::XHTML) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Pod::Simple::Search) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Getopt::Long) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Filter::Util::Call) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(File::Spec::Unix) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(File::Spec::Functions) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(File::Spec) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(File::Path) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Exporter) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Cwd) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Carp) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: libperl.so()(64bit) for package: 4:perl-5.16.3-299.el7_9.x86_64
+---> Package perl-File-Temp.noarch 0:0.23.01-3.el7 will be installed
+--> Running transaction check
+---> Package perl-Carp.noarch 0:1.26-244.el7 will be installed
+---> Package perl-Exporter.noarch 0:5.68-3.el7 will be installed
+---> Package perl-File-Path.noarch 0:2.09-2.el7 will be installed
+---> Package perl-Filter.x86_64 0:1.49-3.el7 will be installed
+---> Package perl-Getopt-Long.noarch 0:2.40-3.el7 will be installed
+--> Processing Dependency: perl(Pod::Usage) >= 1.14 for package: perl-Getopt-Long-2.40-3.el7.noarch
+--> Processing Dependency: perl(Text::ParseWords) for package: perl-Getopt-Long-2.40-3.el7.noarch
+---> Package perl-PathTools.x86_64 0:3.40-5.el7 will be installed
+---> Package perl-Pod-Simple.noarch 1:3.28-4.el7 will be installed
+--> Processing Dependency: perl(Pod::Escapes) >= 1.04 for package: 1:perl-Pod-Simple-3.28-4.el7.noarch
+--> Processing Dependency: perl(Encode) for package: 1:perl-Pod-Simple-3.28-4.el7.noarch
+---> Package perl-Scalar-List-Utils.x86_64 0:1.27-248.el7 will be installed
+---> Package perl-Socket.x86_64 0:2.010-5.el7 will be installed
+---> Package perl-Storable.x86_64 0:2.45-3.el7 will be installed
+---> Package perl-Time-HiRes.x86_64 4:1.9725-3.el7 will be installed
+---> Package perl-Time-Local.noarch 0:1.2300-2.el7 will be installed
+---> Package perl-constant.noarch 0:1.27-2.el7 will be installed
+---> Package perl-libs.x86_64 4:5.16.3-299.el7_9 will be installed
+---> Package perl-macros.x86_64 4:5.16.3-299.el7_9 will be installed
+---> Package perl-threads.x86_64 0:1.87-4.el7 will be installed
+---> Package perl-threads-shared.x86_64 0:1.43-6.el7 will be installed
+--> Running transaction check
+---> Package perl-Encode.x86_64 0:2.51-7.el7 will be installed
+---> Package perl-Pod-Escapes.noarch 1:1.04-299.el7_9 will be installed
+---> Package perl-Pod-Usage.noarch 0:1.63-3.el7 will be installed
+--> Processing Dependency: perl(Pod::Text) >= 3.15 for package: perl-Pod-Usage-1.63-3.el7.noarch
+--> Processing Dependency: perl-Pod-Perldoc for package: perl-Pod-Usage-1.63-3.el7.noarch
+---> Package perl-Text-ParseWords.noarch 0:3.29-4.el7 will be installed
+--> Running transaction check
+---> Package perl-Pod-Perldoc.noarch 0:3.20-4.el7 will be installed
+--> Processing Dependency: perl(parent) for package: perl-Pod-Perldoc-3.20-4.el7.noarch
+--> Processing Dependency: perl(HTTP::Tiny) for package: perl-Pod-Perldoc-3.20-4.el7.noarch
+---> Package perl-podlators.noarch 0:2.5.1-3.el7 will be installed
+--> Running transaction check
+---> Package perl-HTTP-Tiny.noarch 0:0.033-3.el7 will be installed
+---> Package perl-parent.noarch 1:0.225-244.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package                    Arch       Version                Repository   Size
+================================================================================
+Installing:
+ mc                         x86_64     1:4.8.7-11.el7         base        1.7 M
+Installing for dependencies:
+ gpm-libs                   x86_64     1.20.7-6.el7           base         32 k
+ perl                       x86_64     4:5.16.3-299.el7_9     updates     8.0 M
+ perl-Carp                  noarch     1.26-244.el7           base         19 k
+ perl-Encode                x86_64     2.51-7.el7             base        1.5 M
+ perl-Exporter              noarch     5.68-3.el7             base         28 k
+ perl-File-Path             noarch     2.09-2.el7             base         26 k
+ perl-File-Temp             noarch     0.23.01-3.el7          base         56 k
+ perl-Filter                x86_64     1.49-3.el7             base         76 k
+ perl-Getopt-Long           noarch     2.40-3.el7             base         56 k
+ perl-HTTP-Tiny             noarch     0.033-3.el7            base         38 k
+ perl-PathTools             x86_64     3.40-5.el7             base         82 k
+ perl-Pod-Escapes           noarch     1:1.04-299.el7_9       updates      52 k
+ perl-Pod-Perldoc           noarch     3.20-4.el7             base         87 k
+ perl-Pod-Simple            noarch     1:3.28-4.el7           base        216 k
+ perl-Pod-Usage             noarch     1.63-3.el7             base         27 k
+ perl-Scalar-List-Utils     x86_64     1.27-248.el7           base         36 k
+ perl-Socket                x86_64     2.010-5.el7            base         49 k
+ perl-Storable              x86_64     2.45-3.el7             base         77 k
+ perl-Text-ParseWords       noarch     3.29-4.el7             base         14 k
+ perl-Time-HiRes            x86_64     4:1.9725-3.el7         base         45 k
+ perl-Time-Local            noarch     1.2300-2.el7           base         24 k
+ perl-constant              noarch     1.27-2.el7             base         19 k
+ perl-libs                  x86_64     4:5.16.3-299.el7_9     updates     690 k
+ perl-macros                x86_64     4:5.16.3-299.el7_9     updates      44 k
+ perl-parent                noarch     1:0.225-244.el7        base         12 k
+ perl-podlators             noarch     2.5.1-3.el7            base        112 k
+ perl-threads               x86_64     1.87-4.el7             base         49 k
+ perl-threads-shared        x86_64     1.43-6.el7             base         39 k
+
+Transaction Summary
+================================================================================
+Install  1 Package (+28 Dependent packages)
+
+Total download size: 13 M
+Installed size: 42 M
+Downloading packages:
+(2/29): mc-4.8.7-11.el7.x8 0% [                 ]  0.0 B/s |    0 B   --:-- ETA (1/29): perl-Carp-1.26-244.el7.noarch.rpm                  |  19 kB   00:01     
+(3/29): mc-4.8.7-11.el7.x8 0% [                 ]  0.0 B/s |  19 kB   --:-- ETA (2/29): gpm-libs-1.20.7-6.el7.x86_64.rpm                   |  32 kB   00:01     
+(3/29): perl-File-Path-2.09-2.el7.noarch.rpm               |  26 kB   00:00     
+(4/29): perl-Exporter-5.68-3.el7.noarch.rpm                |  28 kB   00:00     
+(5/29): mc-4.8.7-11.el7.x86_64.rpm                         | 1.7 MB   00:01     
+(6/29): perl-Filter-1.49-3.el7.x86_64.rpm                  |  76 kB   00:00     
+(7/29): perl-File-Temp-0.23.01-3.el7.noarch.rpm            |  56 kB   00:00     
+(8/29): perl-Getopt-Long-2.40-3.el7.noarch.rpm             |  56 kB   00:00     
+(9/29): perl-Pod-Escapes-1.04-299.el7_9.noarch.rpm         |  52 kB   00:00     
+(10/29): perl-PathTools-3.40-5.el7.x86_64.rpm              |  82 kB   00:00     
+(13/29): perl-HTTP-Tiny-0. 16% [==-             ] 2.1 MB/s | 2.2 MB   00:05 ETA (11/29): perl-Pod-Perldoc-3.20-4.el7.noarch.rpm            |  87 kB   00:00     
+(12/29): perl-Pod-Simple-3.28-4.el7.noarch.rpm             | 216 kB   00:00     
+(13/29): perl-Pod-Usage-1.63-3.el7.noarch.rpm              |  27 kB   00:00     
+(16/29): perl-HTTP-Tiny-0. 20% [===             ] 2.1 MB/s | 2.7 MB   00:04 ETA (14/29): perl-Scalar-List-Utils-1.27-248.el7.x86_64.rpm    |  36 kB   00:00     
+(15/29): perl-Socket-2.010-5.el7.x86_64.rpm                |  49 kB   00:00     
+(16/29): perl-Encode-2.51-7.el7.x86_64.rpm                 | 1.5 MB   00:02     
+(17/29): perl-Storable-2.45-3.el7.x86_64.rpm               |  77 kB   00:00     
+(18/29): perl-Text-ParseWords-3.29-4.el7.noarch.rpm        |  14 kB   00:00     
+(19/29): perl-Time-HiRes-1.9725-3.el7.x86_64.rpm           |  45 kB   00:00     
+(20/29): perl-Time-Local-1.2300-2.el7.noarch.rpm           |  24 kB   00:00     
+(21/29): perl-constant-1.27-2.el7.noarch.rpm               |  19 kB   00:00     
+(22/29): perl-5.16.3-299.e 36% [=====-          ] 2.2 MB/s | 4.9 MB   00:03 ETA (22/29): perl-HTTP-Tiny-0.033-3.el7.noarch.rpm             |  38 kB   00:01     
+(23/29): perl-5.16.3-299.e 37% [=====-          ] 1.9 MB/s | 4.9 MB   00:04 ETA (23/29): perl-libs-5.16.3-299.el7_9.x86_64.rpm             | 690 kB   00:00     
+(24/29): perl-parent-0.225-244.el7.noarch.rpm              |  12 kB   00:00     
+(25/29): perl-macros-5.16.3-299.el7_9.x86_64.rpm           |  44 kB   00:00     
+(26/29): perl-threads-shared-1.43-6.el7.x86_64.rpm         |  39 kB   00:00     
+(27/29): perl-threads-1.87-4.el7.x86_64.rpm                |  49 kB   00:00     
+(29/29): perl-podlators-2. 47% [=======-        ] 2.0 MB/s | 6.3 MB   00:03 ETA (29/29): perl-podlators-2. 47% [=======-        ] 1.9 MB/s | 6.3 MB   00:03 ETA (28/29): perl-podlators-2.5.1-3.el7.noarch.rpm             | 112 kB   00:00     
+(29/29): perl-5.16.3-299.e 55% [========-       ] 1.8 MB/s | 7.3 MB   00:03 ETA (29/29): perl-5.16.3-299.e 62% [==========      ] 1.6 MB/s | 8.2 MB   00:02 ETA (29/29): perl-5.16.3-299.e 66% [==========-     ] 1.4 MB/s | 8.8 MB   00:03 ETA (29/29): perl-5.16.3-299.e 71% [===========     ] 1.3 MB/s | 9.4 MB   00:02 ETA (29/29): perl-5.16.3-299.e 80% [============-   ] 1.2 MB/s |  11 MB   00:02 ETA (29/29): perl-5.16.3-299.e 93% [=============== ] 1.3 MB/s |  12 MB   00:00 ETA (29/29): perl-5.16.3-299.el7_9.x86_64.rpm                  | 8.0 MB   00:10     
+--------------------------------------------------------------------------------
+Total                                              1.2 MB/s |  13 MB  00:11     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : 1:perl-parent-0.225-244.el7 [                            ]  1/29  Installing : 1:perl-parent-0.225-244.el7 [########                    ]  1/29  Installing : 1:perl-parent-0.225-244.el7 [#################           ]  1/29  Installing : 1:perl-parent-0.225-244.el7 [########################### ]  1/29  Installing : 1:perl-parent-0.225-244.el7.noarch                          1/29 
+  Installing : perl-HTTP-Tiny-0.033-3.el7. [                            ]  2/29  Installing : perl-HTTP-Tiny-0.033-3.el7. [##                          ]  2/29  Installing : perl-HTTP-Tiny-0.033-3.el7. [#######                     ]  2/29  Installing : perl-HTTP-Tiny-0.033-3.el7. [############                ]  2/29  Installing : perl-HTTP-Tiny-0.033-3.el7. [##############              ]  2/29  Installing : perl-HTTP-Tiny-0.033-3.el7. [###############             ]  2/29  Installing : perl-HTTP-Tiny-0.033-3.el7. [########################### ]  2/29  Installing : perl-HTTP-Tiny-0.033-3.el7.noarch                           2/29 
+  Installing : perl-podlators-2.5.1-3.el7. [                            ]  3/29  Installing : perl-podlators-2.5.1-3.el7. [#                           ]  3/29  Installing : perl-podlators-2.5.1-3.el7. [##                          ]  3/29  Installing : perl-podlators-2.5.1-3.el7. [########                    ]  3/29  Installing : perl-podlators-2.5.1-3.el7. [#########                   ]  3/29  Installing : perl-podlators-2.5.1-3.el7. [##########                  ]  3/29  Installing : perl-podlators-2.5.1-3.el7. [###########                 ]  3/29  Installing : perl-podlators-2.5.1-3.el7. [############                ]  3/29  Installing : perl-podlators-2.5.1-3.el7. [#############               ]  3/29  Installing : perl-podlators-2.5.1-3.el7. [##############              ]  3/29  Installing : perl-podlators-2.5.1-3.el7. [###############             ]  3/29  Installing : perl-podlators-2.5.1-3.el7. [#####################       ]  3/29  Installing : perl-podlators-2.5.1-3.el7. [######################      ]  3/29  Installing : perl-podlators-2.5.1-3.el7. [##########################  ]  3/29  Installing : perl-podlators-2.5.1-3.el7. [########################### ]  3/29  Installing : perl-podlators-2.5.1-3.el7.noarch                           3/29 
+  Installing : perl-Pod-Perldoc-3.20-4.el7 [                            ]  4/29  Installing : perl-Pod-Perldoc-3.20-4.el7 [#                           ]  4/29  Installing : perl-Pod-Perldoc-3.20-4.el7 [###                         ]  4/29  Installing : perl-Pod-Perldoc-3.20-4.el7 [####                        ]  4/29  Installing : perl-Pod-Perldoc-3.20-4.el7 [#####                       ]  4/29  Installing : perl-Pod-Perldoc-3.20-4.el7 [######                      ]  4/29  Installing : perl-Pod-Perldoc-3.20-4.el7 [#######                     ]  4/29  Installing : perl-Pod-Perldoc-3.20-4.el7 [########                    ]  4/29  Installing : perl-Pod-Perldoc-3.20-4.el7 [#########                   ]  4/29  Installing : perl-Pod-Perldoc-3.20-4.el7 [###################         ]  4/29  Installing : perl-Pod-Perldoc-3.20-4.el7 [####################        ]  4/29  Installing : perl-Pod-Perldoc-3.20-4.el7 [#####################       ]  4/29  Installing : perl-Pod-Perldoc-3.20-4.el7 [#######################     ]  4/29  Installing : perl-Pod-Perldoc-3.20-4.el7 [########################    ]  4/29  Installing : perl-Pod-Perldoc-3.20-4.el7 [#########################   ]  4/29  Installing : perl-Pod-Perldoc-3.20-4.el7 [##########################  ]  4/29  Installing : perl-Pod-Perldoc-3.20-4.el7 [########################### ]  4/29  Installing : perl-Pod-Perldoc-3.20-4.el7.noarch                          4/29 
+  Installing : 1:perl-Pod-Escapes-1.04-299 [                            ]  5/29  Installing : 1:perl-Pod-Escapes-1.04-299 [#####                       ]  5/29  Installing : 1:perl-Pod-Escapes-1.04-299 [########################### ]  5/29  Installing : 1:perl-Pod-Escapes-1.04-299.el7_9.noarch                    5/29 
+  Installing : perl-Encode-2.51-7.el7.x86_ [                            ]  6/29  Installing : perl-Encode-2.51-7.el7.x86_ [#                           ]  6/29  Installing : perl-Encode-2.51-7.el7.x86_ [##                          ]  6/29  Installing : perl-Encode-2.51-7.el7.x86_ [###                         ]  6/29  Installing : perl-Encode-2.51-7.el7.x86_ [####                        ]  6/29  Installing : perl-Encode-2.51-7.el7.x86_ [#####                       ]  6/29  Installing : perl-Encode-2.51-7.el7.x86_ [######                      ]  6/29  Installing : perl-Encode-2.51-7.el7.x86_ [#######                     ]  6/29  Installing : perl-Encode-2.51-7.el7.x86_ [########                    ]  6/29  Installing : perl-Encode-2.51-7.el7.x86_ [#########                   ]  6/29  Installing : perl-Encode-2.51-7.el7.x86_ [##########                  ]  6/29  Installing : perl-Encode-2.51-7.el7.x86_ [###########                 ]  6/29  Installing : perl-Encode-2.51-7.el7.x86_ [############                ]  6/29  Installing : perl-Encode-2.51-7.el7.x86_ [#############               ]  6/29  Installing : perl-Encode-2.51-7.el7.x86_ [##############              ]  6/29  Installing : perl-Encode-2.51-7.el7.x86_ [###############             ]  6/29  Installing : perl-Encode-2.51-7.el7.x86_ [################            ]  6/29  Installing : perl-Encode-2.51-7.el7.x86_ [#################           ]  6/29  Installing : perl-Encode-2.51-7.el7.x86_ [##################          ]  6/29  Installing : perl-Encode-2.51-7.el7.x86_ [###################         ]  6/29  Installing : perl-Encode-2.51-7.el7.x86_ [####################        ]  6/29  Installing : perl-Encode-2.51-7.el7.x86_ [#####################       ]  6/29  Installing : perl-Encode-2.51-7.el7.x86_ [######################      ]  6/29  Installing : perl-Encode-2.51-7.el7.x86_ [#######################     ]  6/29  Installing : perl-Encode-2.51-7.el7.x86_ [########################    ]  6/29  Installing : perl-Encode-2.51-7.el7.x86_ [#########################   ]  6/29  Installing : perl-Encode-2.51-7.el7.x86_ [##########################  ]  6/29  Installing : perl-Encode-2.51-7.el7.x86_ [########################### ]  6/29  Installing : perl-Encode-2.51-7.el7.x86_64                               6/29 
+  Installing : perl-Text-ParseWords-3.29-4 [                            ]  7/29  Installing : perl-Text-ParseWords-3.29-4 [#                           ]  7/29  Installing : perl-Text-ParseWords-3.29-4 [###                         ]  7/29  Installing : perl-Text-ParseWords-3.29-4 [########                    ]  7/29  Installing : perl-Text-ParseWords-3.29-4 [##############              ]  7/29  Installing : perl-Text-ParseWords-3.29-4 [########################### ]  7/29  Installing : perl-Text-ParseWords-3.29-4.el7.noarch                      7/29 
+  Installing : perl-Pod-Usage-1.63-3.el7.n [                            ]  8/29  Installing : perl-Pod-Usage-1.63-3.el7.n [##                          ]  8/29  Installing : perl-Pod-Usage-1.63-3.el7.n [###                         ]  8/29  Installing : perl-Pod-Usage-1.63-3.el7.n [#####                       ]  8/29  Installing : perl-Pod-Usage-1.63-3.el7.n [#######                     ]  8/29  Installing : perl-Pod-Usage-1.63-3.el7.n [###########                 ]  8/29  Installing : perl-Pod-Usage-1.63-3.el7.n [########################### ]  8/29  Installing : perl-Pod-Usage-1.63-3.el7.noarch                            8/29 
+  Installing : 4:perl-macros-5.16.3-299.el [                            ]  9/29  Installing : 4:perl-macros-5.16.3-299.el [########################### ]  9/29  Installing : 4:perl-macros-5.16.3-299.el7_9.x86_64                       9/29 
+  Installing : perl-Storable-2.45-3.el7.x8 [                            ] 10/29  Installing : perl-Storable-2.45-3.el7.x8 [######                      ] 10/29  Installing : perl-Storable-2.45-3.el7.x8 [################            ] 10/29  Installing : perl-Storable-2.45-3.el7.x8 [###################         ] 10/29  Installing : perl-Storable-2.45-3.el7.x8 [########################    ] 10/29  Installing : perl-Storable-2.45-3.el7.x8 [#########################   ] 10/29  Installing : perl-Storable-2.45-3.el7.x8 [########################### ] 10/29  Installing : perl-Storable-2.45-3.el7.x86_64                            10/29 
+  Installing : perl-Exporter-5.68-3.el7.no [                            ] 11/29  Installing : perl-Exporter-5.68-3.el7.no [#                           ] 11/29  Installing : perl-Exporter-5.68-3.el7.no [##########                  ] 11/29  Installing : perl-Exporter-5.68-3.el7.no [##############              ] 11/29  Installing : perl-Exporter-5.68-3.el7.no [###############             ] 11/29  Installing : perl-Exporter-5.68-3.el7.no [########################    ] 11/29  Installing : perl-Exporter-5.68-3.el7.no [########################### ] 11/29  Installing : perl-Exporter-5.68-3.el7.noarch                            11/29 
+  Installing : perl-constant-1.27-2.el7.no [                            ] 12/29  Installing : perl-constant-1.27-2.el7.no [#####                       ] 12/29  Installing : perl-constant-1.27-2.el7.no [#######                     ] 12/29  Installing : perl-constant-1.27-2.el7.no [########                    ] 12/29  Installing : perl-constant-1.27-2.el7.no [##############              ] 12/29  Installing : perl-constant-1.27-2.el7.no [########################### ] 12/29  Installing : perl-constant-1.27-2.el7.noarch                            12/29 
+  Installing : perl-Socket-2.010-5.el7.x86 [                            ] 13/29  Installing : perl-Socket-2.010-5.el7.x86 [########                    ] 13/29  Installing : perl-Socket-2.010-5.el7.x86 [###################         ] 13/29  Installing : perl-Socket-2.010-5.el7.x86 [#####################       ] 13/29  Installing : perl-Socket-2.010-5.el7.x86 [######################      ] 13/29  Installing : perl-Socket-2.010-5.el7.x86 [#########################   ] 13/29  Installing : perl-Socket-2.010-5.el7.x86 [########################### ] 13/29  Installing : perl-Socket-2.010-5.el7.x86_64                             13/29 
+  Installing : perl-Time-Local-1.2300-2.el [                            ] 14/29  Installing : perl-Time-Local-1.2300-2.el [#####                       ] 14/29  Installing : perl-Time-Local-1.2300-2.el [################            ] 14/29  Installing : perl-Time-Local-1.2300-2.el [####################        ] 14/29  Installing : perl-Time-Local-1.2300-2.el [########################### ] 14/29  Installing : perl-Time-Local-1.2300-2.el7.noarch                        14/29 
+  Installing : perl-Carp-1.26-244.el7.noar [                            ] 15/29  Installing : perl-Carp-1.26-244.el7.noar [#                           ] 15/29  Installing : perl-Carp-1.26-244.el7.noar [##                          ] 15/29  Installing : perl-Carp-1.26-244.el7.noar [#######                     ] 15/29  Installing : perl-Carp-1.26-244.el7.noar [########################### ] 15/29  Installing : perl-Carp-1.26-244.el7.noarch                              15/29 
+  Installing : 4:perl-Time-HiRes-1.9725-3. [                            ] 16/29  Installing : 4:perl-Time-HiRes-1.9725-3. [######                      ] 16/29  Installing : 4:perl-Time-HiRes-1.9725-3. [#############               ] 16/29  Installing : 4:perl-Time-HiRes-1.9725-3. [########################    ] 16/29  Installing : 4:perl-Time-HiRes-1.9725-3. [#########################   ] 16/29  Installing : 4:perl-Time-HiRes-1.9725-3. [########################### ] 16/29  Installing : 4:perl-Time-HiRes-1.9725-3.el7.x86_64                      16/29 
+  Installing : perl-PathTools-3.40-5.el7.x [                            ] 17/29  Installing : perl-PathTools-3.40-5.el7.x [###                         ] 17/29  Installing : perl-PathTools-3.40-5.el7.x [#####                       ] 17/29  Installing : perl-PathTools-3.40-5.el7.x [######                      ] 17/29  Installing : perl-PathTools-3.40-5.el7.x [#########                   ] 17/29  Installing : perl-PathTools-3.40-5.el7.x [##########                  ] 17/29  Installing : perl-PathTools-3.40-5.el7.x [#############               ] 17/29  Installing : perl-PathTools-3.40-5.el7.x [###############             ] 17/29  Installing : perl-PathTools-3.40-5.el7.x [################            ] 17/29  Installing : perl-PathTools-3.40-5.el7.x [######################      ] 17/29  Installing : perl-PathTools-3.40-5.el7.x [#######################     ] 17/29  Installing : perl-PathTools-3.40-5.el7.x [########################    ] 17/29  Installing : perl-PathTools-3.40-5.el7.x [#########################   ] 17/29  Installing : perl-PathTools-3.40-5.el7.x [##########################  ] 17/29  Installing : perl-PathTools-3.40-5.el7.x [########################### ] 17/29  Installing : perl-PathTools-3.40-5.el7.x86_64                           17/29 
+  Installing : perl-Scalar-List-Utils-1.27 [                            ] 18/29  Installing : perl-Scalar-List-Utils-1.27 [##                          ] 18/29  Installing : perl-Scalar-List-Utils-1.27 [###                         ] 18/29  Installing : perl-Scalar-List-Utils-1.27 [######                      ] 18/29  Installing : perl-Scalar-List-Utils-1.27 [#################           ] 18/29  Installing : perl-Scalar-List-Utils-1.27 [######################      ] 18/29  Installing : perl-Scalar-List-Utils-1.27 [#######################     ] 18/29  Installing : perl-Scalar-List-Utils-1.27 [########################    ] 18/29  Installing : perl-Scalar-List-Utils-1.27 [##########################  ] 18/29  Installing : perl-Scalar-List-Utils-1.27 [########################### ] 18/29  Installing : perl-Scalar-List-Utils-1.27-248.el7.x86_64                 18/29 
+  Installing : 1:perl-Pod-Simple-3.28-4.el [                            ] 19/29  Installing : 1:perl-Pod-Simple-3.28-4.el [#                           ] 19/29  Installing : 1:perl-Pod-Simple-3.28-4.el [##                          ] 19/29  Installing : 1:perl-Pod-Simple-3.28-4.el [###                         ] 19/29  Installing : 1:perl-Pod-Simple-3.28-4.el [####                        ] 19/29  Installing : 1:perl-Pod-Simple-3.28-4.el [#####                       ] 19/29  Installing : 1:perl-Pod-Simple-3.28-4.el [######                      ] 19/29  Installing : 1:perl-Pod-Simple-3.28-4.el [#########                   ] 19/29  Installing : 1:perl-Pod-Simple-3.28-4.el [#############               ] 19/29  Installing : 1:perl-Pod-Simple-3.28-4.el [##############              ] 19/29  Installing : 1:perl-Pod-Simple-3.28-4.el [###############             ] 19/29  Installing : 1:perl-Pod-Simple-3.28-4.el [#################           ] 19/29  Installing : 1:perl-Pod-Simple-3.28-4.el [##################          ] 19/29  Installing : 1:perl-Pod-Simple-3.28-4.el [####################        ] 19/29  Installing : 1:perl-Pod-Simple-3.28-4.el [#####################       ] 19/29  Installing : 1:perl-Pod-Simple-3.28-4.el [#######################     ] 19/29  Installing : 1:perl-Pod-Simple-3.28-4.el [#########################   ] 19/29  Installing : 1:perl-Pod-Simple-3.28-4.el [##########################  ] 19/29  Installing : 1:perl-Pod-Simple-3.28-4.el [########################### ] 19/29  Installing : 1:perl-Pod-Simple-3.28-4.el7.noarch                        19/29 
+  Installing : perl-File-Temp-0.23.01-3.el [                            ] 20/29  Installing : perl-File-Temp-0.23.01-3.el [##                          ] 20/29  Installing : perl-File-Temp-0.23.01-3.el [#####                       ] 20/29  Installing : perl-File-Temp-0.23.01-3.el [###########                 ] 20/29  Installing : perl-File-Temp-0.23.01-3.el [##############              ] 20/29  Installing : perl-File-Temp-0.23.01-3.el [#########################   ] 20/29  Installing : perl-File-Temp-0.23.01-3.el [########################### ] 20/29  Installing : perl-File-Temp-0.23.01-3.el7.noarch                        20/29 
+  Installing : perl-File-Path-2.09-2.el7.n [                            ] 21/29  Installing : perl-File-Path-2.09-2.el7.n [###                         ] 21/29  Installing : perl-File-Path-2.09-2.el7.n [####                        ] 21/29  Installing : perl-File-Path-2.09-2.el7.n [#########                   ] 21/29  Installing : perl-File-Path-2.09-2.el7.n [########################### ] 21/29  Installing : perl-File-Path-2.09-2.el7.noarch                           21/29 
+  Installing : perl-threads-shared-1.43-6. [                            ] 22/29  Installing : perl-threads-shared-1.43-6. [###############             ] 22/29  Installing : perl-threads-shared-1.43-6. [######################      ] 22/29  Installing : perl-threads-shared-1.43-6. [########################    ] 22/29  Installing : perl-threads-shared-1.43-6. [########################### ] 22/29  Installing : perl-threads-shared-1.43-6.el7.x86_64                      22/29 
+  Installing : perl-threads-1.87-4.el7.x86 [                            ] 23/29  Installing : perl-threads-1.87-4.el7.x86 [###########                 ] 23/29  Installing : perl-threads-1.87-4.el7.x86 [#####################       ] 23/29  Installing : perl-threads-1.87-4.el7.x86 [#######################     ] 23/29  Installing : perl-threads-1.87-4.el7.x86 [########################    ] 23/29  Installing : perl-threads-1.87-4.el7.x86 [########################### ] 23/29  Installing : perl-threads-1.87-4.el7.x86_64                             23/29 
+  Installing : perl-Filter-1.49-3.el7.x86_ [                            ] 24/29  Installing : perl-Filter-1.49-3.el7.x86_ [##                          ] 24/29  Installing : perl-Filter-1.49-3.el7.x86_ [######                      ] 24/29  Installing : perl-Filter-1.49-3.el7.x86_ [#######                     ] 24/29  Installing : perl-Filter-1.49-3.el7.x86_ [########                    ] 24/29  Installing : perl-Filter-1.49-3.el7.x86_ [###########                 ] 24/29  Installing : perl-Filter-1.49-3.el7.x86_ [##############              ] 24/29  Installing : perl-Filter-1.49-3.el7.x86_ [###############             ] 24/29  Installing : perl-Filter-1.49-3.el7.x86_ [#################           ] 24/29  Installing : perl-Filter-1.49-3.el7.x86_ [##################          ] 24/29  Installing : perl-Filter-1.49-3.el7.x86_ [###################         ] 24/29  Installing : perl-Filter-1.49-3.el7.x86_ [####################        ] 24/29  Installing : perl-Filter-1.49-3.el7.x86_ [#####################       ] 24/29  Installing : perl-Filter-1.49-3.el7.x86_ [######################      ] 24/29  Installing : perl-Filter-1.49-3.el7.x86_ [#######################     ] 24/29  Installing : perl-Filter-1.49-3.el7.x86_ [#########################   ] 24/29  Installing : perl-Filter-1.49-3.el7.x86_ [##########################  ] 24/29  Installing : perl-Filter-1.49-3.el7.x86_ [########################### ] 24/29  Installing : perl-Filter-1.49-3.el7.x86_64                              24/29 
+  Installing : 4:perl-libs-5.16.3-299.el7_ [                            ] 25/29  Installing : 4:perl-libs-5.16.3-299.el7_ [#                           ] 25/29  Installing : 4:perl-libs-5.16.3-299.el7_ [###                         ] 25/29  Installing : 4:perl-libs-5.16.3-299.el7_ [####                        ] 25/29  Installing : 4:perl-libs-5.16.3-299.el7_ [#####                       ] 25/29  Installing : 4:perl-libs-5.16.3-299.el7_ [######                      ] 25/29  Installing : 4:perl-libs-5.16.3-299.el7_ [#######                     ] 25/29  Installing : 4:perl-libs-5.16.3-299.el7_ [########                    ] 25/29  Installing : 4:perl-libs-5.16.3-299.el7_ [#########                   ] 25/29  Installing : 4:perl-libs-5.16.3-299.el7_ [##########                  ] 25/29  Installing : 4:perl-libs-5.16.3-299.el7_ [############                ] 25/29  Installing : 4:perl-libs-5.16.3-299.el7_ [#############               ] 25/29  Installing : 4:perl-libs-5.16.3-299.el7_ [##############              ] 25/29  Installing : 4:perl-libs-5.16.3-299.el7_ [###############             ] 25/29  Installing : 4:perl-libs-5.16.3-299.el7_ [################            ] 25/29  Installing : 4:perl-libs-5.16.3-299.el7_ [#################           ] 25/29  Installing : 4:perl-libs-5.16.3-299.el7_ [##################          ] 25/29  Installing : 4:perl-libs-5.16.3-299.el7_ [###################         ] 25/29  Installing : 4:perl-libs-5.16.3-299.el7_ [#####################       ] 25/29  Installing : 4:perl-libs-5.16.3-299.el7_ [######################      ] 25/29  Installing : 4:perl-libs-5.16.3-299.el7_ [#######################     ] 25/29  Installing : 4:perl-libs-5.16.3-299.el7_ [########################    ] 25/29  Installing : 4:perl-libs-5.16.3-299.el7_ [#########################   ] 25/29  Installing : 4:perl-libs-5.16.3-299.el7_ [##########################  ] 25/29  Installing : 4:perl-libs-5.16.3-299.el7_ [########################### ] 25/29  Installing : 4:perl-libs-5.16.3-299.el7_9.x86_64                        25/29 
+  Installing : perl-Getopt-Long-2.40-3.el7 [                            ] 26/29  Installing : perl-Getopt-Long-2.40-3.el7 [###                         ] 26/29  Installing : perl-Getopt-Long-2.40-3.el7 [#####                       ] 26/29  Installing : perl-Getopt-Long-2.40-3.el7 [######                      ] 26/29  Installing : perl-Getopt-Long-2.40-3.el7 [#######                     ] 26/29  Installing : perl-Getopt-Long-2.40-3.el7 [##########                  ] 26/29  Installing : perl-Getopt-Long-2.40-3.el7 [########################    ] 26/29  Installing : perl-Getopt-Long-2.40-3.el7 [########################### ] 26/29  Installing : perl-Getopt-Long-2.40-3.el7.noarch                         26/29 
+  Installing : 4:perl-5.16.3-299.el7_9.x86 [                            ] 27/29  Installing : 4:perl-5.16.3-299.el7_9.x86 [#                           ] 27/29  Installing : 4:perl-5.16.3-299.el7_9.x86 [##                          ] 27/29  Installing : 4:perl-5.16.3-299.el7_9.x86 [###                         ] 27/29  Installing : 4:perl-5.16.3-299.el7_9.x86 [####                        ] 27/29  Installing : 4:perl-5.16.3-299.el7_9.x86 [#####                       ] 27/29  Installing : 4:perl-5.16.3-299.el7_9.x86 [######                      ] 27/29  Installing : 4:perl-5.16.3-299.el7_9.x86 [#######                     ] 27/29  Installing : 4:perl-5.16.3-299.el7_9.x86 [########                    ] 27/29  Installing : 4:perl-5.16.3-299.el7_9.x86 [#########                   ] 27/29  Installing : 4:perl-5.16.3-299.el7_9.x86 [##########                  ] 27/29  Installing : 4:perl-5.16.3-299.el7_9.x86 [###########                 ] 27/29  Installing : 4:perl-5.16.3-299.el7_9.x86 [############                ] 27/29  Installing : 4:perl-5.16.3-299.el7_9.x86 [#############               ] 27/29  Installing : 4:perl-5.16.3-299.el7_9.x86 [##############              ] 27/29  Installing : 4:perl-5.16.3-299.el7_9.x86 [###############             ] 27/29  Installing : 4:perl-5.16.3-299.el7_9.x86 [################            ] 27/29  Installing : 4:perl-5.16.3-299.el7_9.x86 [#################           ] 27/29  Installing : 4:perl-5.16.3-299.el7_9.x86 [##################          ] 27/29  Installing : 4:perl-5.16.3-299.el7_9.x86 [###################         ] 27/29  Installing : 4:perl-5.16.3-299.el7_9.x86 [####################        ] 27/29  Installing : 4:perl-5.16.3-299.el7_9.x86 [#####################       ] 27/29  Installing : 4:perl-5.16.3-299.el7_9.x86 [######################      ] 27/29  Installing : 4:perl-5.16.3-299.el7_9.x86 [#######################     ] 27/29  Installing : 4:perl-5.16.3-299.el7_9.x86 [########################    ] 27/29  Installing : 4:perl-5.16.3-299.el7_9.x86 [#########################   ] 27/29  Installing : 4:perl-5.16.3-299.el7_9.x86 [##########################  ] 27/29  Installing : 4:perl-5.16.3-299.el7_9.x86 [########################### ] 27/29  Installing : 4:perl-5.16.3-299.el7_9.x86_64                             27/29 
+  Installing : gpm-libs-1.20.7-6.el7.x86_6 [                            ] 28/29  Installing : gpm-libs-1.20.7-6.el7.x86_6 [########################### ] 28/29  Installing : gpm-libs-1.20.7-6.el7.x86_64                               28/29 
+  Installing : 1:mc-4.8.7-11.el7.x86_64 [                               ] 29/29  Installing : 1:mc-4.8.7-11.el7.x86_64 [#                              ] 29/29  Installing : 1:mc-4.8.7-11.el7.x86_64 [##                             ] 29/29  Installing : 1:mc-4.8.7-11.el7.x86_64 [###                            ] 29/29  Installing : 1:mc-4.8.7-11.el7.x86_64 [####                           ] 29/29  Installing : 1:mc-4.8.7-11.el7.x86_64 [#####                          ] 29/29  Installing : 1:mc-4.8.7-11.el7.x86_64 [######                         ] 29/29  Installing : 1:mc-4.8.7-11.el7.x86_64 [#######                        ] 29/29  Installing : 1:mc-4.8.7-11.el7.x86_64 [########                       ] 29/29  Installing : 1:mc-4.8.7-11.el7.x86_64 [#########                      ] 29/29  Installing : 1:mc-4.8.7-11.el7.x86_64 [##########                     ] 29/29  Installing : 1:mc-4.8.7-11.el7.x86_64 [###########                    ] 29/29  Installing : 1:mc-4.8.7-11.el7.x86_64 [############                   ] 29/29  Installing : 1:mc-4.8.7-11.el7.x86_64 [#############                  ] 29/29  Installing : 1:mc-4.8.7-11.el7.x86_64 [##############                 ] 29/29  Installing : 1:mc-4.8.7-11.el7.x86_64 [###############                ] 29/29  Installing : 1:mc-4.8.7-11.el7.x86_64 [################               ] 29/29  Installing : 1:mc-4.8.7-11.el7.x86_64 [#################              ] 29/29  Installing : 1:mc-4.8.7-11.el7.x86_64 [##################             ] 29/29  Installing : 1:mc-4.8.7-11.el7.x86_64 [###################            ] 29/29  Installing : 1:mc-4.8.7-11.el7.x86_64 [####################           ] 29/29  Installing : 1:mc-4.8.7-11.el7.x86_64 [#####################          ] 29/29  Installing : 1:mc-4.8.7-11.el7.x86_64 [######################         ] 29/29  Installing : 1:mc-4.8.7-11.el7.x86_64 [#######################        ] 29/29  Installing : 1:mc-4.8.7-11.el7.x86_64 [########################       ] 29/29  Installing : 1:mc-4.8.7-11.el7.x86_64 [#########################      ] 29/29  Installing : 1:mc-4.8.7-11.el7.x86_64 [##########################     ] 29/29  Installing : 1:mc-4.8.7-11.el7.x86_64 [###########################    ] 29/29  Installing : 1:mc-4.8.7-11.el7.x86_64 [############################   ] 29/29  Installing : 1:mc-4.8.7-11.el7.x86_64 [#############################  ] 29/29  Installing : 1:mc-4.8.7-11.el7.x86_64 [############################## ] 29/29  Installing : 1:mc-4.8.7-11.el7.x86_64                                   29/29 
+  Verifying  : 1:mc-4.8.7-11.el7.x86_64                                    1/29 
+  Verifying  : perl-HTTP-Tiny-0.033-3.el7.noarch                           2/29 
+  Verifying  : perl-threads-shared-1.43-6.el7.x86_64                       3/29 
+  Verifying  : perl-Storable-2.45-3.el7.x86_64                             4/29 
+  Verifying  : perl-Exporter-5.68-3.el7.noarch                             5/29 
+  Verifying  : perl-constant-1.27-2.el7.noarch                             6/29 
+  Verifying  : perl-PathTools-3.40-5.el7.x86_64                            7/29 
+  Verifying  : 4:perl-macros-5.16.3-299.el7_9.x86_64                       8/29 
+  Verifying  : 1:perl-parent-0.225-244.el7.noarch                          9/29 
+  Verifying  : perl-Socket-2.010-5.el7.x86_64                             10/29 
+  Verifying  : perl-File-Temp-0.23.01-3.el7.noarch                        11/29 
+  Verifying  : 1:perl-Pod-Simple-3.28-4.el7.noarch                        12/29 
+  Verifying  : perl-Time-Local-1.2300-2.el7.noarch                        13/29 
+  Verifying  : 1:perl-Pod-Escapes-1.04-299.el7_9.noarch                   14/29 
+  Verifying  : perl-Carp-1.26-244.el7.noarch                              15/29 
+  Verifying  : 4:perl-Time-HiRes-1.9725-3.el7.x86_64                      16/29 
+  Verifying  : perl-Scalar-List-Utils-1.27-248.el7.x86_64                 17/29 
+  Verifying  : perl-Pod-Usage-1.63-3.el7.noarch                           18/29 
+  Verifying  : perl-Encode-2.51-7.el7.x86_64                              19/29 
+  Verifying  : perl-Pod-Perldoc-3.20-4.el7.noarch                         20/29 
+  Verifying  : perl-podlators-2.5.1-3.el7.noarch                          21/29 
+  Verifying  : 4:perl-5.16.3-299.el7_9.x86_64                             22/29 
+  Verifying  : perl-File-Path-2.09-2.el7.noarch                           23/29 
+  Verifying  : perl-threads-1.87-4.el7.x86_64                             24/29 
+  Verifying  : gpm-libs-1.20.7-6.el7.x86_64                               25/29 
+  Verifying  : perl-Filter-1.49-3.el7.x86_64                              26/29 
+  Verifying  : perl-Getopt-Long-2.40-3.el7.noarch                         27/29 
+  Verifying  : perl-Text-ParseWords-3.29-4.el7.noarch                     28/29 
+  Verifying  : 4:perl-libs-5.16.3-299.el7_9.x86_64                        29/29 
+
+Installed:
+  mc.x86_64 1:4.8.7-11.el7                                                      
+
+Dependency Installed:
+  gpm-libs.x86_64 0:1.20.7-6.el7                                                
+  perl.x86_64 4:5.16.3-299.el7_9                                                
+  perl-Carp.noarch 0:1.26-244.el7                                               
+  perl-Encode.x86_64 0:2.51-7.el7                                               
+  perl-Exporter.noarch 0:5.68-3.el7                                             
+  perl-File-Path.noarch 0:2.09-2.el7                                            
+  perl-File-Temp.noarch 0:0.23.01-3.el7                                         
+  perl-Filter.x86_64 0:1.49-3.el7                                               
+  perl-Getopt-Long.noarch 0:2.40-3.el7                                          
+  perl-HTTP-Tiny.noarch 0:0.033-3.el7                                           
+  perl-PathTools.x86_64 0:3.40-5.el7                                            
+  perl-Pod-Escapes.noarch 1:1.04-299.el7_9                                      
+  perl-Pod-Perldoc.noarch 0:3.20-4.el7                                          
+  perl-Pod-Simple.noarch 1:3.28-4.el7                                           
+  perl-Pod-Usage.noarch 0:1.63-3.el7                                            
+  perl-Scalar-List-Utils.x86_64 0:1.27-248.el7                                  
+  perl-Socket.x86_64 0:2.010-5.el7                                              
+  perl-Storable.x86_64 0:2.45-3.el7                                             
+  perl-Text-ParseWords.noarch 0:3.29-4.el7                                      
+  perl-Time-HiRes.x86_64 4:1.9725-3.el7                                         
+  perl-Time-Local.noarch 0:1.2300-2.el7                                         
+  perl-constant.noarch 0:1.27-2.el7                                             
+  perl-libs.x86_64 4:5.16.3-299.el7_9                                           
+  perl-macros.x86_64 4:5.16.3-299.el7_9                                         
+  perl-parent.noarch 1:0.225-244.el7                                            
+  perl-podlators.noarch 0:2.5.1-3.el7                                           
+  perl-threads.x86_64 0:1.87-4.el7                                              
+  perl-threads-shared.x86_64 0:1.43-6.el7                                       
+
+Complete!
+[root@nfsc ~]# mc
+[1;25r[4l[25;1H[0;10m[37m[40m[0;10m[39;49m[K[1;25r[4l[0;10m[39m[49m[1;25r[H[J[2;1H[37m[44m┌<─[30m[47m ~ [37m[44m────────────────────────────.[^]>┐
+│[38C│
+│[30m[46m/..              │UP--DIR│Oct 11 05:40[37m[44m│
+│[1m[37m[44m/.cache          [0;10m[37m[44m│[1m[37m[44m     16[0;10m[37m[44m│[1m[37m[44mOct 11 09:05[0;10m[37m[44m│
+│[1m[37m[44m/.config         [0;10m[37m[44m│[1m[37m[44m     16[0;10m[37m[44m│[1m[37m[44mOct 11 09:05[0;10m[37m[44m│
+│[1m[37m[44m/.local          [0;10m[37m[44m│[1m[37m[44m     19[0;10m[37m[44m│[1m[37m[44mOct 11 09:05[0;10m[37m[44m│
+│ .bash_history   │   1049│Oct 11 08:46│
+│ .bash_logout    │     18│Dec 29  2013│
+│ .bash_profile   │    176│Dec 29  2013│
+│ .bashrc         │    176│Dec 29  2013│
+│ .cshrc          │    100│Dec 29  2013│
+│ .tcshrc         │    129│Dec 29  2013│
+│ anaconda-ks.cfg │   5570│Apr 30  2020│
+│ original-ks.cfg │   5300│Apr 30  2020│
+│ typescript      │  45056│Oct 11 09:05│
+│                 │       │            │
+│                 │       │            │
+│                 │       │            │
+├[38C┤
+│[38C│
+└────────────────────── 33G/40G (82%) ─┘
+[39m[49mHint: Find File: you can work on the files found using the Panelize button.
+
+[1m[37m[40m 1[0;10m[30m[46mHelp  [1m[37m[40m 2[0;10m[30m[46mMenu  [1m[37m[40m 3[0;10m[30m[46mView  [1m[37m[40m 4[0;10m[30m[46mEdit  [1m[37m[40m 5[0;10m[30m[46mCopy  [1m[37m[40m 6[0;10m[30m[46mRenMov[1m[37m[40m 7[0;10m[30m[46mMkdir [1m[37m[40m 8[0;10m[30m[46mDelete[1m[37m[40m 9[0;10m[30m[46mPullDn[1m[37m[40m10[0;10m[30m[46mQuit[K[23;80H[1;1H  Left     File     Command     Options     Right[K[2;41H[37m[44m┌<─ ~ ────────────────────────────.[^]>┐[3;2H[1m[33m[44m'n     Name      [0;10m[37m[44m│[1m[33m[44m Size  [0;10m[37m[44m│[1m[33m[44mModify time [0;10m[37m[44m││[1m[33m[44m'n     Name      [0;10m[37m[44m│[1m[33m[44m Size  [0;10m[37m[44m│[1m[33m[44mModify time [0;10m[37m[44m│[4;41H│[1m[37m[44m/..              [0;10m[37m[44m│[1m[37m[44mUP--DIR[0;10m[37m[44m│[1m[37m[44mOct 11 05:40[0;10m[37m[44m│[5;41H│[1m[37m[44m/.cache          [0;10m[37m[44m│[1m[37m[44m     16[0;10m[37m[44m│[1m[37m[44mOct 11 09:05[0;10m[37m[44m│[6;41H│[1m[37m[44m/.config         [0;10m[37m[44m│[1m[37m[44m     16[0;10m[37m[44m│[1m[37m[44mOct 11 09:05[0;10m[37m[44m│[7;41H│[1m[37m[44m/.local          [0;10m[37m[44m│[1m[37m[44m     19[0;10m[37m[44m│[1m[37m[44mOct 11 09:05[0;10m[37m[44m│[8;41H│ .bash_history   │   1049│Oct 11 08:46│[9;41H│ .bash_logout    │     18│Dec 29  2013│[10;41H│ .bash_profile   │    176│Dec 29  2013│[11;41H│ .bashrc         │    176│Dec 29  2013│[12;41H│ .cshrc          │    100│Dec 29  2013│[13;41H│ .tcshrc         │    129│Dec 29  2013│[14;41H│ anaconda-ks.cfg │   5570│Apr 30  2020│[15;41H│ original-ks.cfg │   5300│Apr 30  2020│[16;41H│ typescript      │  45056│Oct 11 09:05│[17;41H│                 │       │            │[18;41H│                 │       │            │[19;41H│                 │       │            │[20;2H──────────────────────────────────────┤├──────────────────────────────────────┤[21;2HUP--DIR                               ││UP--DIR                               │[22;41H└────────────────────── 33G/40G (82%) ─┘[24;1H[39m[49m[root@nfsc ~]#[24;16H[2;5H[30m[47m/[4;2H[1m[37m[44m/dev             [0;10m[37m[44m│[1m[37m[44m   2860[0;10m[37m[44m│[1m[37m[44mOct 11 08:47[5;3Hetc   [14C8192[6;3Hhome   [15C21[0;10m[37m[44m│[1m[37m[44mApr 30  2020[7;2H~lib   [16C 7[0;10m[37m[44m│[1m[37m[44mApr 30  2020[8;2H~lib64           [0;10m[37m[44m│[1m[37m[44m      9[0;10m[37m[44m│[1m[37m[44mApr 30  2020[9;2H/media           [0;10m[37m[44m│[1m[37m[44m      6[0;10m[37m[44m│[1m[37m[44mApr 11  2018[10;2H/mnt             [0;10m[37m[44m│[1m[37m[44m      0[0;10m[37m[44m│[1m[37m[44mOct 11 08:59[11;2H/opt             [0;10m[37m[44m│[1m[37m[44m      6[0;10m[37m[44m│[1m[37m[44mApr 11  2018[12;2H/proc            [0;10m[37m[44m│[1m[37m[44m      0[0;10m[37m[44m│[1m[37m[44mOct 11 09:04[13;2H[0;10m[30m[46m/root            │    219│Oct 11 09:05[14;2H[1m[37m[44m/run             [0;10m[37m[44m│[1m[37m[44m    820[0;10m[37m[44m│[1m[37m[44mOct 11 09:05[15;2H~sbin            [0;10m[37m[44m│[1m[37m[44m      8[0;10m[37m[44m│[1m[37m[44mApr 30  2020[16;2H/srv             [0;10m[37m[44m│[1m[37m[44m      6[0;10m[37m[44m│[1m[37m[44mApr 11  2018[17;2H/sys             [0;10m[37m[44m│[1m[37m[44m      0[0;10m[37m[44m│[1m[37m[44mOct 11 08:46[18;2H/tmp             [0;10m[37m[44m│[1m[37m[44m   4096[0;10m[37m[44m│[1m[37m[44mOct 11 09:05[19;2H/usr             [0;10m[37m[44m│[1m[37m[44m    155[0;10m[37m[44m│[1m[37m[44mApr 30  2020[21;2H[0;10m[37m[44m/root  [24;16H[24;12H[39m[49m/[24;16H[12;2H[30m[46m/proc            │      0│Oct 11 09:04[13;2H[1m[37m[44m/root            [0;10m[37m[44m│[1m[37m[44m    219[0;10m[37m[44m│[1m[37m[44mOct 11 09:05[21;3H[0;10m[37m[44mproc[24;16H[11;2H[30m[46m/opt             │      6│Apr 11  2018[12;2H[1m[37m[44m/proc            [0;10m[37m[44m│[1m[37m[44m      0[0;10m[37m[44m│[1m[37m[44mOct 11 09:04[21;3H[0;10m[37m[44mopt [24;16H[10;2H[30m[46m/mnt             │      0│Oct 11 08:59[11;2H[1m[37m[44m/opt             [0;10m[37m[44m│[1m[37m[44m      6[0;10m[37m[44m│[1m[37m[44mApr 11  2018[21;3H[0;10m[37m[44mmn[24;16H[7;27H[1m[37m[41m                             [8;27H ┌─────────[33m Error [37m─────────┐ [9;27H │                         │ [10;27H │ Cannot change directory │ [11;27H │                         │ [12;27H └─────────────────────────┘ [13;27H                             [23;7H[0;10m[39m[49mYou can specify the username when doing ftps: 'cd ftp://user@machine.edu'[7;27H[37m[44m│[1m[37m[44mApr 30  2020[0;10m[37m[44m││[1m[37m[44m/.local       [8;27H[0;10m[37m[44m│[1m[37m[44mApr 30  2020[0;10m[37m[44m││ .bash_history[9;2H[30m[46m/media           │      6│Apr 11  2018[37m[44m││ .bash_logout [10;2H[1m[37m[44m/mnt             [0;10m[37m[44m│[1m[37m[44m      0[0;10m[37m[44m│[1m[37m[44mOct 11 08:59[0;10m[37m[44m││ .bash_profile[11;27H│[1m[37m[44mApr 11  2018[0;10m[37m[44m││ .bashrc      [12;27H│[1m[37m[44mOct 11 09:04[0;10m[37m[44m││ .cshrc       [13;27H│[1m[37m[44mOct 11 09:05[0;10m[37m[44m││ .tcshrc      [21;4Hedia[24;16H[9;2H[1m[37m[44m/media           [0;10m[37m[44m│[1m[37m[44m      6[0;10m[37m[44m│[1m[37m[44mApr 11  2018[10;2H[0;10m[30m[46m/mnt             │      0│Oct 11 08:59[21;4H[37m[44mnt  [24;16H[9;2H[30m[46m/media           │      6│Apr 11  2018[10;2H[1m[37m[44m/mnt             [0;10m[37m[44m│[1m[37m[44m      0[0;10m[37m[44m│[1m[37m[44mOct 11 08:59[21;4H[0;10m[37m[44media[24;16H[7;13H[30m[47m                                                        [8;13H ┌──────────────[34m The Midnight Commander [30m──────────────┐ [9;13H │ Do you really want to quit the Midnight Commander? │ [10;13H ├────────────────────────────────────────────────────┤ [11;13H │                  [46m[ [34mY[30mes ][47m  [ [34mN[30mo ]                   │ [12;13H └────────────────────────────────────────────────────┘ [13;13H                                                        [11;35H[7;13H[1m[37m[44m      [0;10m[37m[44m│[1m[37m[44m      7[0;10m[37m[44m│[1m[37m[44mApr 30  2020[0;10m[37m[44m││[1m[37m[44m/.local          [0;10m[37m[44m│[1m[37m[44m     19[0;10m[37m[44m│[1m[37m[44mO[8;13H      [0;10m[37m[44m│[1m[37m[44m      9[0;10m[37m[44m│[1m[37m[44mApr 30  2020[0;10m[37m[44m││ .bash_history   │   1049│O[9;13H[30m[46m      │      6│Apr 11  2018[37m[44m││ .bash_logout    │     18│D[10;13H[1m[37m[44m      [0;10m[37m[44m│[1m[37m[44m      0[0;10m[37m[44m│[1m[37m[44mOct 11 08:59[0;10m[37m[44m││ .bash_profile   │    176│D[11;13H[1m[37m[44m      [0;10m[37m[44m│[1m[37m[44m      6[0;10m[37m[44m│[1m[37m[44mApr 11  2018[0;10m[37m[44m││ .bashrc         │    176│D[12;13H[1m[37m[44m      [0;10m[37m[44m│[1m[37m[44m      0[0;10m[37m[44m│[1m[37m[44mOct 11 09:04[0;10m[37m[44m││ .cshrc          │    100│D[13;13H[1m[37m[44m      [0;10m[37m[44m│[1m[37m[44m    219[0;10m[37m[44m│[1m[37m[44mOct 11 09:05[0;10m[37m[44m││ .tcshrc         │    129│D[24;16H[39m[49m[21~[9;2H[1m[37m[44m/media           [0;10m[37m[44m│[1m[37m[44m      6[0;10m[37m[44m│[1m[37m[44mApr 11  2018[10;2H[0;10m[30m[46m/mnt             │      0│Oct 11 08:59[21;4H[37m[44mnt  [24;19H[10;2H[1m[37m[44m/mnt             [0;10m[37m[44m│[1m[37m[44m      0[0;10m[37m[44m│[1m[37m[44mOct 11 08:59[11;2H[0;10m[30m[46m/opt             │      6│Apr 11  2018[21;3H[37m[44mop[24;19H[39m[49m21~[24;20H[24;21H211~[24;23H211~[24;25H[1;1H[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K[1;80H[25;1H[0;10m[39;49m[K
+[root@nfsc /]# [212121211~
+bash: [212121211~: command not found
+Press any key to continue...
+[1;25r[4l[0;10m[39m[49m[1;25r[H[J[1;1H[30m[46m  Left     File     Command     Options     Right[K
+[37m[44m┌<─[30m[47m / [37m[44m────────────────────────────.[^]>┐┌<─ ~ ────────────────────────────.[^]>┐[3;1H│[1m[33m[44m'n     Name      [0;10m[37m[44m│[1m[33m[44m Size  [0;10m[37m[44m│[1m[33m[44mModify time [0;10m[37m[44m││[1m[33m[44m'n     Name      [0;10m[37m[44m│[1m[33m[44m Size  [0;10m[37m[44m│[1m[33m[44mModify time [0;10m[37m[44m│[4;1H│[1m[37m[44m/dev             [0;10m[37m[44m│[1m[37m[44m   2860[0;10m[37m[44m│[1m[37m[44mOct 11 08:47[0;10m[37m[44m││[1m[37m[44m/..              [0;10m[37m[44m│[1m[37m[44mUP--DIR[0;10m[37m[44m│[1m[37m[44mOct 11 05:40[0;10m[37m[44m│[5;1H│[1m[37m[44m/etc             [0;10m[37m[44m│[1m[37m[44m   8192[0;10m[37m[44m│[1m[37m[44mOct 11 09:07[0;10m[37m[44m││[1m[37m[44m/.cache          [0;10m[37m[44m│[1m[37m[44m     16[0;10m[37m[44m│[1m[37m[44mOct 11 09:05[0;10m[37m[44m│[6;1H│[1m[37m[44m/home            [0;10m[37m[44m│[1m[37m[44m     21[0;10m[37m[44m│[1m[37m[44mApr 30  2020[0;10m[37m[44m││[1m[37m[44m/.config         [0;10m[37m[44m│[1m[37m[44m     16[0;10m[37m[44m│[1m[37m[44mOct 11 09:05[0;10m[37m[44m│[7;1H│[1m[37m[44m~lib             [0;10m[37m[44m│[1m[37m[44m      7[0;10m[37m[44m│[1m[37m[44mApr 30  2020[0;10m[37m[44m││[1m[37m[44m/.local          [0;10m[37m[44m│[1m[37m[44m     19[0;10m[37m[44m│[1m[37m[44mOct 11 09:05[0;10m[37m[44m│[8;1H│[1m[37m[44m~lib64           [0;10m[37m[44m│[1m[37m[44m      9[0;10m[37m[44m│[1m[37m[44mApr 30  2020[0;10m[37m[44m││ .bash_history   │   1049│Oct 11 08:46│[9;1H│[1m[37m[44m/media           [0;10m[37m[44m│[1m[37m[44m      6[0;10m[37m[44m│[1m[37m[44mApr 11  2018[0;10m[37m[44m││ .bash_logout    │     18│Dec 29  2013│[10;1H│[1m[37m[44m/mnt             [0;10m[37m[44m│[1m[37m[44m      0[0;10m[37m[44m│[1m[37m[44mOct 11 08:59[0;10m[37m[44m││ .bash_profile   │    176│Dec 29  2013│[11;1H│[30m[46m/opt             │      6│Apr 11  2018[37m[44m││ .bashrc         │    176│Dec 29  2013│[12;1H│[1m[37m[44m/proc            [0;10m[37m[44m│[1m[37m[44m      0[0;10m[37m[44m│[1m[37m[44mOct 11 09:04[0;10m[37m[44m││ .cshrc          │    100│Dec 29  2013│[13;1H│[1m[37m[44m/root            [0;10m[37m[44m│[1m[37m[44m    219[0;10m[37m[44m│[1m[37m[44mOct 11 09:05[0;10m[37m[44m││ .tcshrc         │    129│Dec 29  2013│[14;1H│[1m[37m[44m/run             [0;10m[37m[44m│[1m[37m[44m    820[0;10m[37m[44m│[1m[37m[44mOct 11 09:07[0;10m[37m[44m││ anaconda-ks.cfg │   5570│Apr 30  2020│[15;1H│[1m[37m[44m~sbin            [0;10m[37m[44m│[1m[37m[44m      8[0;10m[37m[44m│[1m[37m[44mApr 30  2020[0;10m[37m[44m││ original-ks.cfg │   5300│Apr 30  2020│[16;1H│[1m[37m[44m/srv             [0;10m[37m[44m│[1m[37m[44m      6[0;10m[37m[44m│[1m[37m[44mApr 11  2018[0;10m[37m[44m││ typescript      │  57344│Oct 11 09:07│[17;1H│[1m[37m[44m/sys             [0;10m[37m[44m│[1m[37m[44m      0[0;10m[37m[44m│[1m[37m[44mOct 11 08:46[0;10m[37m[44m││                 │       │            │[18;1H│[1m[37m[44m/tmp             [0;10m[37m[44m│[1m[37m[44m   4096[0;10m[37m[44m│[1m[37m[44mOct 11 09:05[0;10m[37m[44m││                 │       │            │[19;1H│[1m[37m[44m/usr             [0;10m[37m[44m│[1m[37m[44m    155[0;10m[37m[44m│[1m[37m[44mApr 30  2020[0;10m[37m[44m││                 │       │            │[20;1H├──────────────────────────────────────┤├──────────────────────────────────────┤[21;1H│/opt                                  ││UP--DIR                               │[22;1H└────────────────────── 33G/40G (82%) ─┘└────────────────────── 33G/40G (82%) ─┘[23;1H[39m[49mHint: You can disable all requests for confirmation in Options/Confirmation.
+[root@nfsc /]#[63C[37m[44m[^][25;1H[1m[37m[40m 1[0;10m[30m[46mHelp  [1m[37m[40m 2[0;10m[30m[46mMenu  [1m[37m[40m 3[0;10m[30m[46mView  [1m[37m[40m 4[0;10m[30m[46mEdit  [1m[37m[40m 5[0;10m[30m[46mCopy  [1m[37m[40m 6[0;10m[30m[46mRenMov[1m[37m[40m 7[0;10m[30m[46mMkdir [1m[37m[40m 8[0;10m[30m[46mDelete[1m[37m[40m 9[0;10m[30m[46mPullDn[1m[37m[40m10[0;10m[30m[46mQuit[K[24;16H[7;13H[47m                                                        [8;13H ┌──────────────[34m The Midnight Commander [30m──────────────┐ [9;13H │ Do you really want to quit the Midnight Commander? │ [10;13H ├────────────────────────────────────────────────────┤ [11;13H │                  [46m[ [34mY[30mes ][47m  [ [34mN[30mo ]                   │ [12;13H └────────────────────────────────────────────────────┘ [13;13H                                                        [11;35H[23;7H[39m[49mTo use the mouse cut and paste may require holding the shift key[K[23;80H[1;1H[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K[1;80H[25;1H[0;10m[39;49m[K[39;49m
+[root@nfsc ~]# mcyum install mc -y[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cmc[K[K[Kping 10.0.2.15
+PING 10.0.2.15 (10.0.2.15) 56(84) bytes of data.
+64 bytes from 10.0.2.15: icmp_seq=1 ttl=64 time=0.036 ms
+64 bytes from 10.0.2.15: icmp_seq=2 ttl=64 time=0.040 ms
+^C
+--- 10.0.2.15 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 999ms
+rtt min/avg/max/mdev = 0.036/0.038/0.040/0.002 ms
+[root@nfsc ~]# ping 10.0.2.15[K[K23
+PING 10.0.2.23 (10.0.2.23) 56(84) bytes of data.
+From 10.0.2.15 icmp_seq=1 Destination Host Unreachable
+From 10.0.2.15 icmp_seq=2 Destination Host Unreachable
+From 10.0.2.15 icmp_seq=3 Destination Host Unreachable
+From 10.0.2.15 icmp_seq=4 Destination Host Unreachable
+^C
+--- 10.0.2.23 ping statistics ---
+5 packets transmitted, 0 received, +4 errors, 100% packet loss, time 4003ms
+pipe 4
+[root@nfsc ~]# ping 10.0.2.23
+PING 10.0.2.23 (10.0.2.23) 56(84) bytes of data.
+64 bytes from 10.0.2.23: icmp_seq=1 ttl=64 time=1.16 ms
+64 bytes from 10.0.2.23: icmp_seq=2 ttl=64 time=1.06 ms
+^C
+--- 10.0.2.23 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1002ms
+rtt min/avg/max/mdev = 1.064/1.112/1.161/0.058 ms
+[root@nfsc ~]# mc
+[1;25r[4l[25;1H[0;10m[37m[40m[0;10m[39;49m[K[1;25r[4l[0;10m[39m[49m[1;25r[H[J[2;1H[37m[44m┌<─[30m[47m ~ [37m[44m────────────────────────────.[^]>┐
+│[38C│
+│[30m[46m/..              │UP--DIR│Oct 11 05:40[37m[44m│
+│[1m[37m[44m/.cache          [0;10m[37m[44m│[1m[37m[44m     16[0;10m[37m[44m│[1m[37m[44mOct 11 09:05[0;10m[37m[44m│
+│[1m[37m[44m/.config         [0;10m[37m[44m│[1m[37m[44m     16[0;10m[37m[44m│[1m[37m[44mOct 11 09:05[0;10m[37m[44m│
+│[1m[37m[44m/.local          [0;10m[37m[44m│[1m[37m[44m     19[0;10m[37m[44m│[1m[37m[44mOct 11 09:05[0;10m[37m[44m│
+│ .bash_history   │   1061│Oct 11 09:08│
+│ .bash_logout    │     18│Dec 29  2013│
+│ .bash_profile   │    176│Dec 29  2013│
+│ .bashrc         │    176│Dec 29  2013│
+│ .cshrc          │    100│Dec 29  2013│
+│ .tcshrc         │    129│Dec 29  2013│
+│ anaconda-ks.cfg │   5570│Apr 30  2020│
+│ original-ks.cfg │   5300│Apr 30  2020│
+│ typescript      │  61440│Oct 11 09:08│
+│                 │       │            │
+│                 │       │            │
+│                 │       │            │
+├[38C┤
+│[38C│
+└────────────────────── 33G/40G (82%) ─┘
+[39m[49mHint: To change directory halfway through typing a command, use M-c (quick cd).
+
+[1m[37m[40m 1[0;10m[30m[46mHelp  [1m[37m[40m 2[0;10m[30m[46mMenu  [1m[37m[40m 3[0;10m[30m[46mView  [1m[37m[40m 4[0;10m[30m[46mEdit  [1m[37m[40m 5[0;10m[30m[46mCopy  [1m[37m[40m 6[0;10m[30m[46mRenMov[1m[37m[40m 7[0;10m[30m[46mMkdir [1m[37m[40m 8[0;10m[30m[46mDelete[1m[37m[40m 9[0;10m[30m[46mPullDn[1m[37m[40m10[0;10m[30m[46mQuit[K[23;80H[1;1H  Left     File     Command     Options     Right[K[2;41H[37m[44m┌<─ ~ ────────────────────────────.[^]>┐[3;2H[1m[33m[44m'n     Name      [0;10m[37m[44m│[1m[33m[44m Size  [0;10m[37m[44m│[1m[33m[44mModify time [0;10m[37m[44m││[1m[33m[44m'n     Name      [0;10m[37m[44m│[1m[33m[44m Size  [0;10m[37m[44m│[1m[33m[44mModify time [0;10m[37m[44m│[4;41H│[1m[37m[44m/..              [0;10m[37m[44m│[1m[37m[44mUP--DIR[0;10m[37m[44m│[1m[37m[44mOct 11 05:40[0;10m[37m[44m│[5;41H│[1m[37m[44m/.cache          [0;10m[37m[44m│[1m[37m[44m     16[0;10m[37m[44m│[1m[37m[44mOct 11 09:05[0;10m[37m[44m│[6;41H│[1m[37m[44m/.config         [0;10m[37m[44m│[1m[37m[44m     16[0;10m[37m[44m│[1m[37m[44mOct 11 09:05[0;10m[37m[44m│[7;41H│[1m[37m[44m/.local          [0;10m[37m[44m│[1m[37m[44m     19[0;10m[37m[44m│[1m[37m[44mOct 11 09:05[0;10m[37m[44m│[8;41H│ .bash_history   │   1061│Oct 11 09:08│[9;41H│ .bash_logout    │     18│Dec 29  2013│[10;41H│ .bash_profile   │    176│Dec 29  2013│[11;41H│ .bashrc         │    176│Dec 29  2013│[12;41H│ .cshrc          │    100│Dec 29  2013│[13;41H│ .tcshrc         │    129│Dec 29  2013│[14;41H│ anaconda-ks.cfg │   5570│Apr 30  2020│[15;41H│ original-ks.cfg │   5300│Apr 30  2020│[16;41H│ typescript      │  61440│Oct 11 09:08│[17;41H│                 │       │            │[18;41H│                 │       │            │[19;41H│                 │       │            │[20;2H──────────────────────────────────────┤├──────────────────────────────────────┤[21;2HUP--DIR                               ││UP--DIR                               │[22;41H└────────────────────── 33G/40G (82%) ─┘[24;77H[39m[49m[1K [37m[44m[^][24;1H[39m[49m[root@nfsc ~]#[63C[24;16H[2;5H[30m[47m/[4;2H[1m[37m[44m/dev             [0;10m[37m[44m│[1m[37m[44m   2860[0;10m[37m[44m│[1m[37m[44mOct 11 08:47[5;3Hetc   [14C8192[12C9[6;3Hhome   [15C21[0;10m[37m[44m│[1m[37m[44mApr 30  2020[7;2H~lib   [16C 7[0;10m[37m[44m│[1m[37m[44mApr 30  2020[8;2H~lib64           [0;10m[37m[44m│[1m[37m[44m      9[0;10m[37m[44m│[1m[37m[44mApr 30  2020[9;2H/media           [0;10m[37m[44m│[1m[37m[44m      6[0;10m[37m[44m│[1m[37m[44mApr 11  2018[10;2H/mnt             [0;10m[37m[44m│[1m[37m[44m      0[0;10m[37m[44m│[1m[37m[44mOct 11 08:59[11;2H/opt             [0;10m[37m[44m│[1m[37m[44m      6[0;10m[37m[44m│[1m[37m[44mApr 11  2018[12;2H/proc            [0;10m[37m[44m│[1m[37m[44m      0[0;10m[37m[44m│[1m[37m[44mOct 11 09:04[13;2H[0;10m[30m[46m/root            │    219│Oct 11 09:05[14;2H[1m[37m[44m/run             [0;10m[37m[44m│[1m[37m[44m    800[0;10m[37m[44m│[1m[37m[44mOct 11 09:09[15;2H~sbin            [0;10m[37m[44m│[1m[37m[44m      8[0;10m[37m[44m│[1m[37m[44mApr 30  2020[16;2H/srv             [0;10m[37m[44m│[1m[37m[44m      6[0;10m[37m[44m│[1m[37m[44mApr 11  2018[17;2H/sys             [0;10m[37m[44m│[1m[37m[44m      0[0;10m[37m[44m│[1m[37m[44mOct 11 08:46[18;2H/tmp             [0;10m[37m[44m│[1m[37m[44m   4096[0;10m[37m[44m│[1m[37m[44mOct 11 09:05[19;2H/usr             [0;10m[37m[44m│[1m[37m[44m    155[0;10m[37m[44m│[1m[37m[44mApr 30  2020[21;2H[0;10m[37m[44m/root  [24;16H[24;12H[39m[49m/[24;16H[12;2H[30m[46m/proc            │      0│Oct 11 09:04[13;2H[1m[37m[44m/root            [0;10m[37m[44m│[1m[37m[44m    219[0;10m[37m[44m│[1m[37m[44mOct 11 09:05[21;3H[0;10m[37m[44mproc[24;16H[11;2H[30m[46m/opt             │      6│Apr 11  2018[12;2H[1m[37m[44m/proc            [0;10m[37m[44m│[1m[37m[44m      0[0;10m[37m[44m│[1m[37m[44mOct 11 09:04[21;3H[0;10m[37m[44mopt [24;16H[10;2H[30m[46m/mnt             │      0│Oct 11 08:59[11;2H[1m[37m[44m/opt             [0;10m[37m[44m│[1m[37m[44m      6[0;10m[37m[44m│[1m[37m[44mApr 11  2018[21;3H[0;10m[37m[44mmn[24;16H[2;6H[30m[47mmnt [4;2H[46m/..              │UP--DIR│Oct 11 05:40[5;3H[1m[37m[44mupload[14C   6[9C8:10[6;2H[0;10m[37m[44m                 │       │            [7;2H                 │       │            [8;2H                 │       │            [9;2H                 │       │            [10;2H                 │       │            [11;2H                 │       │            [12;2H                 │       │            [13;2H                 │       │            [14;2H                 │       │            [15;2H                 │       │            [16;2H                 │       │            [17;2H                 │       │            [18;2H                 │       │            [19;2H                 │       │            [21;2HUP--DIR[24;16H[24;12H[39m[49mmnt]#[61C[24;18H[7;13H[30m[47m                                                        [8;13H ┌──────────────[34m The Midnight Commander [30m──────────────┐ [9;13H │ Do you really want to quit the Midnight Commander? │ [10;13H ├────────────────────────────────────────────────────┤ [11;13H │                  [46m[ [34mY[30mes ][47m  [ [34mN[30mo ]                   │ [12;13H └────────────────────────────────────────────────────┘ [13;13H                                                        [11;35H[23;7H[39m[49mIf your terminal lacks functions keys, use the ESC+number sequence.[K[23;80H[1;1H[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K[1;80H[25;1H[0;10m[39;49m[K[39;49m
+[root@nfsc ~]# mcping 10.0.2.2315mc[Kyum install mc -y[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cmc[Kls -l /mnt/mount | grep mnt
+systemd-1 on /[01;31m[Kmnt[m[K type autofs (rw,relatime,fd=43,pgrp=1,timeout=0,minproto=5,maxproto=5,direct,pipe_ino=17852)
+10.0.2.23:/srv/share/ on /[01;31m[Kmnt[m[K type nfs (rw,relatime,vers=3,rsize=32768,wsize=32768,namlen=255,hard,proto=ud
